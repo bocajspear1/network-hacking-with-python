@@ -147,6 +147,7 @@ int main() {
             
         }
         // This is "I'm done" message, just a message of 1 null byte
+        size = sizeof(uint8_t);
         send(client_fd, &size, sizeof(uint16_t), 0);
         small_resp = 0;
         send(client_fd, &small_resp, sizeof(uint8_t), 0);
