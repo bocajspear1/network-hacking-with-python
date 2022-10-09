@@ -1,18 +1,18 @@
 outdir = ./out
 
-all: opensource
+all: opensource messages
 
 mkbindir:
 	mkdir -p $(outdir)
 
 .PHONY: opensource
 opensource: mkbindir
-	gcc opensource.c -o $(outdir)/opensource
+	${CC} -static  opensource.c -o $(outdir)/opensource
 
 .PHONY: messages
 messages: mkbindir
 	base64 -d messages.c.base64 > messages.c.gpg
-	@echo ${HIDEKEY} | gpg -d --batch --yes --passphrase-fd 0 messages.c.gpg | gcc -x c -o $(outdir)/messages -
+	@echo ${HIDEKEY} | gpg -d --batch --yes --passphrase-fd 0 messages.c.gpg | ${CC} -static -x c -o $(outdir)/messages -
 
 .PHONY: enc-messages
 enc-messages: mkbindir
