@@ -1,4 +1,4 @@
-# Messages
+# messages
 
 With this challenge, you don't get the source code. You'll need another source of data to determine what effect your communications to the server are having.
 
@@ -20,12 +20,12 @@ If you send some data to this new server, you'll not it gives a lot of log messa
 
 For this challenge, use the log messages to determine the protocol. You'll have to figure values out by brute forcing them, looping until you find a value that produces a different response or a response you want.
 
-## Other Hints
-
-* 
-
 ## Exploiting the Server
 
 When looking logs vulnerabilities, look for logs that indicate interesting functionality, such as "command" or "execute".
 
 * This challenge also has a way to execute commands through the server, but you'll have to brute force your way there.
+
+## Other Hints
+
+* If you're looking for a fast way to create repeated strings for testing, you can use `* <NUMBER>` on string. So writing `'a' * 5` creates a string with 5 a's (`'aaaaa'`)

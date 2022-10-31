@@ -1,4 +1,4 @@
-# Network Hacking with Python
+# Home
 
 This site and repo contains the groundwork and challenges for getting started with attack and exploiting network protocols with Python.
 
@@ -9,4 +9,4 @@ The goal here is to get you familiar with lower-level networking with Python, wo
 Note that this guide won't step you through everything you'll need to do, just point you in the right direction. Get your hacker-mind on and start with the challenges below:
 
 * [opensource](opensource) (Start Here)
-* [messages](messages) (Start Here)
+* [messages](messages)

@@ -28,9 +28,7 @@ Not only is Python documentation great for being comprehensive, many times they 
 To communicate with the challenge server, the basic steps are to:
 
 1. Create socket
-2. Connect to the server using the socket
-
-It might look something like this:
+2. Connect to the server using the socket, it might look something like this:
 ```python
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 sock.connect(("<ADDR>", <PORT>))
@@ -66,13 +64,13 @@ number_tuple = struct.unpack("BB", numbers_as_bytes)
 
 I usually reference the library's documentation a lot, especially for the different sizes of data and their corresponding letters.
 
-## Other Hints
-
-* Don't forget about endianness of numbers. Most numbers, when put into a binary form, will be little endian (e.g. "backwards"). If you're looking at a number that seems too big or too small, try reversing the endianness of the number. (You probably won't use this in this challenge, but it's something to remember.)
-
 ## Exploiting the Server
 
 When looking at source code for vulnerabilities, look for common coding mistakes or interesting functions (such as `system`, which runs commands).
 
 * Look around the code for mistakes in writing data into static buffers. Perhaps you can get the server to crash?
 * Look for functions that might give you cool functionality. Looks like this code calls commands `popen`, can you craft a message to run commands without any authentication.
+
+## Other Hints
+
+* Don't forget about endianness of numbers. Most numbers, when put into a binary form, will be little endian (e.g. "backwards"). If you're looking at a number that seems too big or too small, try reversing the endianness of the number. (You probably won't use this in this challenge, but it's something to remember.)
