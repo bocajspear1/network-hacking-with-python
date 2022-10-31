@@ -1,4 +1,8 @@
-# messages
+---
+layout: default
+title: messages
+---
+
 
 With this challenge, you don't get the source code. You'll need another source of data to determine what effect your communications to the server are having.
 

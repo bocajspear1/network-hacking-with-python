@@ -1,4 +1,7 @@
-# opensource
+---
+layout: default
+title: opensource
+---
 
 This is the simplest challenge. Not only is the protocol not as advanced, you get the source code too! When doing security tests in the real world, it's really great to get the source code to an application you're testing. This really speeds the test up, especially when you have a limited time to test and return results to the customer. (If a customers complains that this unrealistic, remind them that you only have weeks to test, while hacker might have weeks to years! Access to source code can be key to finding critical vulnerabilities. Still, sometimes, you may have to make do without source code. We'll get to that later...)
 

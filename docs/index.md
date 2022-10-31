@@ -1,5 +1,3 @@
-# Home
-
 This site and repo contains the groundwork and challenges for getting started with attack and exploiting network protocols with Python.
 
 > NOTE: Remember, you are responsible with what you do with this knowledge. Always get permission to attack systems that don't belong to you and use this knowledge to help others. Don't use this for illegal activities!
