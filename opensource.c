@@ -1,10 +1,16 @@
+#ifdef __WIN32__
+#include <winsock2.h>
+#include <ws2tcpip.h>
+#else
 #include <sys/socket.h>
-#include <stdint.h>
-#include <stdio.h>
 #include <netinet/in.h>
-#include <string.h>
 #include <netdb.h>
 #include <arpa/inet.h>
+#endif
+
+#include <stdint.h>
+#include <stdio.h>
+#include <string.h>
 #include <unistd.h>
 
 #define BUFFER_SIZE 500

@@ -7,11 +7,15 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v2
       - name: Install muslc
-        run: sudo apt-get update && sudo apt-get install -y musl-tools
-      - name: Run build
+        run: sudo apt-get update && sudo apt-get install -y musl-tools gcc-mingw-w64-x86-64
+      - name: Run Linux build
         env:
           HIDEKEY: ${{ secrets.HIDEKEY }}
         run: make all CC=musl-gcc 
+      - name: Run Windows (Mingw) build
+        env:
+          HIDEKEY: ${{ secrets.HIDEKEY }}
+        run: make all CC=x86_64-w64-mingw32-gcc-win32 CCEXTRA='-lws2_32'
       - uses: actions/upload-artifact@v3
         with:
           name: binaries
