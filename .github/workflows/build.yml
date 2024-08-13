@@ -4,10 +4,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Get current date
-        id: date
-        run: |
-          echo "{date}={$(date +'%Y-%m-%d.%H%M%S')}" >> $GITHUB_STATE
       - name: Check out repository code
         uses: actions/checkout@v2
       - name: Install muslc
@@ -25,9 +21,10 @@ jobs:
           name: binaries
           path: out/*
       - name: Release
-        uses: softprops/action-gh-release@v1
+        uses: ncipollo/release-action@v1
         if: github.ref == 'refs/heads/main'
         with:
-          files: out/*
-          name: "latest"
-          tag_name: "${{ env.date }}"
+          artifacts: "out/*"
+          name: "Latest"
+          allowUpdates: true
+          tag: latest
