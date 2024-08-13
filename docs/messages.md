@@ -20,7 +20,7 @@ The server will now be running on port 9999, listening only locally.
 
 ## Getting Our Information
 
-If you send some data to this new server, you'll not it gives a lot of log messages. Log messages are a great source of information about how the application is responding to you data. This is great even if you have source code, as it also will show you where in the code your attacks have made the application go.
+If you send some data to this new server, you'll note it gives a lot of log messages. Log messages are a great source of information about how the application is responding to you data. This is great even if you have source code, as it also will show you where in the code your attacks have made the application go.
 
 For this challenge, use the log messages to determine the protocol. You'll have to figure values out by brute forcing them, looping until you find a value that produces a different response or a response you want.
 
