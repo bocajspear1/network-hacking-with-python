@@ -31,4 +31,3 @@ jobs:
           files: out/*
           name: "latest"
           tag_name: "${{ env.date }}"
-          make_latest: true
