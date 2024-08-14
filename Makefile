@@ -9,6 +9,10 @@ mkbindir:
 opensource: mkbindir
 	${CC} -static opensource.c -o $(outdir)/opensource ${CCEXTRA}
 
+.PHONY: messages-local
+messages-local: mkbindir
+	${CC} -static messages.c -o $(outdir)/messages ${CCEXTRA}
+
 .PHONY: messages
 messages: mkbindir
 	base64 -d messages.c.base64 > messages.c.gpg

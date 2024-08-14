@@ -3,3 +3,5 @@
 out/
 messages.c
 messages.c.gpg
+tmp.c
+*.exe
