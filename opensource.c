@@ -65,7 +65,17 @@ int main() {
     
     int client_status = 0;
 
-    server_fd = socket(AF_INET, SOCK_STREAM, 0);
+    #ifdef __WIN32__
+    WSADATA wsaData = {0};
+    printf("Running WSAStartup\n");
+    int startup = WSAStartup(MAKEWORD(2, 2), &wsaData);
+    if (startup != 0) {
+        wprintf(L"WSAStartup failed: %d\n", startup);
+        return 1;
+    }
+    #endif
+
+    server_fd = socket(AF_INET, SOCK_STREAM, 6);
 
     if (server_fd == -1) {
         printf("Unable to create socket!\n");
@@ -159,5 +169,9 @@ int main() {
         send(client_fd, &small_resp, sizeof(uint8_t), 0);
 
         close(client_fd);
+
+        #ifdef __WIN32__
+        WSACleanup();
+        #endif
     }
 }
