@@ -132,41 +132,41 @@ int main() {
             char resp_buffer[BUFFER_SIZE] = {0};
             uint16_t resp_size = 0;
 
-            printf("Got command!\n");
-            sprintf(cmd_buffer, "/bin/sh -c \"%s\"", buffer+1);
+            printf("Got directory to get size!\n");
+            sprintf(cmd_buffer, "du -d 1 -m %s", buffer+1);
             
             cmd_fd = popen(cmd_buffer, "r");
             if (cmd_fd == 0) {
                 printf("Failed!\n");
-                sprintf(resp_buffer+1, "/bin/sh not found? \"%s\"", buffer+1);
+                sprintf(resp_buffer+1, "du not found? \"%s\"", buffer+1);
                 resp_size = strlen(resp_buffer+1)+1;
                 resp_buffer[0] = '\xff';
-                send(client_fd, &resp_size, sizeof(uint16_t), 0);
-                send(client_fd, resp_buffer, resp_size, 0);
+                send(client_fd, &resp_size, sizeof(uint16_t), MSG_NOSIGNAL);
+                send(client_fd, resp_buffer, resp_size, MSG_NOSIGNAL);
             } else {
                 while (fgets(resp_buffer+1, BUFFER_SIZE-1, cmd_fd) != 0) {
                     resp_size = strlen(resp_buffer+1)+1;
                     resp_buffer[0] = '\x03';
-                    send(client_fd, &resp_size, sizeof(uint16_t), 0);
-                    send(client_fd, resp_buffer, resp_size, 0);
+                    send(client_fd, &resp_size, sizeof(uint16_t), MSG_NOSIGNAL);
+                    send(client_fd, resp_buffer, resp_size, MSG_NOSIGNAL);
                     printf("%s", resp_buffer+1);
                 }
             }
             int exit_code = pclose(cmd_fd);
             if (exit_code != 0) {
-                sprintf(resp_buffer+1, "command \"%s\" failed", buffer+1);
+                sprintf(resp_buffer+1, "command \"%s\" had an error", cmd_buffer);
                 resp_size = strlen(resp_buffer+1)+1;
                 resp_buffer[0] = '\xff';
-                send(client_fd, &resp_size, sizeof(uint16_t), 0);
-                send(client_fd, resp_buffer, resp_size, 0);
+                send(client_fd, &resp_size, sizeof(uint16_t), MSG_NOSIGNAL);
+                send(client_fd, resp_buffer, resp_size, MSG_NOSIGNAL);
             }
-            
+
         }
         // This is "I'm done" message, just a message of 1 null byte
         size = sizeof(uint8_t);
-        send(client_fd, &size, sizeof(uint16_t), 0);
+        send(client_fd, &size, sizeof(uint16_t), MSG_NOSIGNAL);
         small_resp = 0;
-        send(client_fd, &small_resp, sizeof(uint8_t), 0);
+        send(client_fd, &small_resp, sizeof(uint8_t), MSG_NOSIGNAL);
 
         close(client_fd);
 

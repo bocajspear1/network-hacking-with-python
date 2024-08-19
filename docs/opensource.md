@@ -125,10 +125,11 @@ You should now have the groundwork to exploit the server!
 
 ## Exploiting the Server
 
-When looking at source code for vulnerabilities, look for common coding mistakes or interesting functions (such as `system`, which runs commands).
+When looking at source code for vulnerabilities, look for common coding mistakes or interesting functions (such as `system`, `exec` or `popen`, which run commands).
 
 * Look around the code for mistakes in writing data into static buffers. Perhaps you can get the server to crash?
-* Look for functions that might give you cool functionality. Looks like this code calls commands `popen`, can you craft a message to run commands without any authentication.
+* Look for functions that might give you cool functionality. Looks like this code calls commands `popen` to run the `du` command that gives usage output of the provided directory. Can you craft a message to inject arbitrary commands?
+* Size fields can be manipulated to make the servers do unexpected things. What happens if you lie about the size of your message?
 
 ## Other Hints
 
