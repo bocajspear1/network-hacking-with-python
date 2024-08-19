@@ -66,6 +66,7 @@ int main() {
     int client_status = 0;
 
     #ifdef __WIN32__
+    #define MSG_NOSIGNAL 0
     WSADATA wsaData = {0};
     printf("Running WSAStartup\n");
     int startup = WSAStartup(MAKEWORD(2, 2), &wsaData);
